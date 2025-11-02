@@ -3982,3 +3982,1005 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
 .theme-dark_red .progress-fill { background: linear-gradient(90deg, #330000, #4d0000); }
 .theme-dark_orange .progress-fill { background: linear-gradient(90deg, #331a00, #4d2600); }
 .theme-dark_yellow .progress-fill { background: linear-gradient(90deg, #332200, #4d3300); }
+
+/* ========== ГЛУБОКИЕ ЭФФЕКТЫ ДЛЯ ВСЕХ ТЕМ ========== */
+
+/* Матрица - падающий дождь кода */
+.theme-feature-matrix-rain::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 2px,
+        rgba(0, 255, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9996;
+    animation: matrixRainFall 3s linear infinite;
+}
+
+@keyframes matrixRainFall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Киберпанк - неоновый пульс */
+.theme-feature-neon-pulse button {
+    animation: neonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(255, 0, 255, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(255, 0, 255, 1), 0 0 80px rgba(255, 0, 255, 0.6); }
+}
+
+/* Трон - линии движения */
+.theme-feature-tron-lines::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 9996;
+    animation: tronGridMove 10s linear infinite;
+}
+
+@keyframes tronGridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 30px; }
+}
+
+/* Пустота - свечение */
+.theme-feature-void-glow * {
+    animation: voidGlow 3s ease-in-out infinite;
+}
+
+@keyframes voidGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* Радуга - волна */
+.theme-feature-rainbow-wave {
+    background-size: 400% 400%;
+    animation: rainbowWave 5s ease infinite;
+}
+
+@keyframes rainbowWave {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Неон - свечение */
+.theme-feature-neon-glow button,
+.theme-feature-neon-glow .glow {
+    text-shadow: 
+        0 0 10px currentColor,
+        0 0 20px currentColor,
+        0 0 30px currentColor,
+        0 0 40px currentColor;
+}
+
+/* Космос - звёзды мерцают */
+.space-stars-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9996;
+    background-image: 
+        radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 30% 60%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 40%, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 90% 10%, rgba(255, 255, 255, 0.5), transparent);
+    background-size: 300% 300%;
+    animation: starsTwinkle 20s ease-in-out infinite;
+}
+
+.theme-feature-stars-twinkle .space-stars-overlay {
+    animation: starsTwinkle 3s ease-in-out infinite, starsMove 30s linear infinite;
+}
+
+@keyframes starsTwinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Пиксель - дизеринг */
+.theme-feature-pixel-dither button,
+.theme-feature-pixel-dither .info-card {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.theme-feature-8bit * {
+    font-family: 'Courier New', monospace;
+    text-rendering: optimizeSpeed;
+}
+
+/* Сакура - падающие лепестки */
+.sakura-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9996;
+    overflow: hidden;
+}
+
+.theme-feature-sakura-fall .sakura-overlay::before,
+.theme-feature-sakura-fall .sakura-overlay::after {
+    content: '🌸';
+    position: absolute;
+    font-size: 1.5em;
+    opacity: 0.4;
+    animation: sakuraFall 8s linear infinite;
+}
+
+.theme-feature-sakura-fall .sakura-overlay::before {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.theme-feature-sakura-fall .sakura-overlay::after {
+    left: 80%;
+    animation-delay: 4s;
+}
+
+@keyframes sakuraFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 0.4; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Золото - блёстки */
+.theme-feature-gold-sparkle button::before {
+    content: '✨';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    opacity: 0;
+    animation: goldSparkle 2s ease-in-out infinite;
+}
+
+@keyframes goldSparkle {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.5); }
+}
+
+.theme-feature-luxury .info-card,
+.theme-feature-luxury .stat-card {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 223, 0, 0.05));
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Океан - волны */
+.ocean-waves-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    pointer-events: none;
+    z-index: 9996;
+    background: linear-gradient(to top, rgba(0, 136, 204, 0.3), transparent);
+    animation: oceanWaves 4s ease-in-out infinite;
+}
+
+@keyframes oceanWaves {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.theme-feature-ocean-wave .ocean-waves-overlay::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 255, 255, 0.2) 10px,
+        rgba(0, 255, 255, 0.2) 20px
+    );
+    animation: wavePattern 3s linear infinite;
+}
+
+@keyframes wavePattern {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50px); }
+}
+
+/* Лес - частицы */
+.forest-particles-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9996;
+    background-image: 
+        radial-gradient(3px 3px at 20% 30%, rgba(0, 255, 0, 0.3), transparent),
+        radial-gradient(2px 2px at 60% 70%, rgba(34, 139, 34, 0.2), transparent),
+        radial-gradient(1px 1px at 80% 10%, rgba(0, 128, 0, 0.4), transparent);
+    animation: forestBreeze 15s linear infinite;
+}
+
+.theme-feature-forest-breeze .forest-particles-overlay {
+    animation: forestBreeze 10s linear infinite, forestParticles 20s ease-in-out infinite;
+}
+
+@keyframes forestBreeze {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+@keyframes forestParticles {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Огонь - мерцание */
+.fire-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    pointer-events: none;
+    z-index: 9996;
+    background: linear-gradient(to top, rgba(255, 69, 0, 0.4), transparent);
+    animation: fireFlicker 0.5s ease-in-out infinite;
+}
+
+@keyframes fireFlicker {
+    0%, 100% { opacity: 0.6; transform: scaleY(1); }
+    25% { opacity: 0.8; transform: scaleY(1.1); }
+    50% { opacity: 0.7; transform: scaleY(0.9); }
+    75% { opacity: 0.9; transform: scaleY(1.05); }
+}
+
+.theme-feature-fire-flicker button {
+    animation: fireGlow 1s ease-in-out infinite;
+}
+
+@keyframes fireGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+    50% { box-shadow: 0 0 40px rgba(255, 69, 0, 1), 0 0 60px rgba(255, 140, 0, 0.6); }
+}
+
+/* Лёд - кристаллы */
+.theme-feature-ice-crystals::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 255, 255, 0.05) 10px, rgba(0, 255, 255, 0.05) 20px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(135, 206, 235, 0.05) 10px, rgba(135, 206, 235, 0.05) 20px);
+    pointer-events: none;
+    z-index: 9996;
+    animation: iceCrystals 20s linear infinite;
+}
+
+@keyframes iceCrystals {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+.theme-feature-frost button {
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), inset 0 0 15px rgba(135, 206, 235, 0.3);
+}
+
+/* Бэтмен - сигнал летучей мыши */
+.theme-feature-bat-signal::before {
+    content: '🦇';
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 3em;
+    opacity: 0.3;
+    z-index: 9996;
+    animation: batSignal 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes batSignal {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+    50% { transform: scale(1.2) rotate(5deg); opacity: 0.6; }
+}
+
+.theme-feature-gothic button {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), inset 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Бегущий по лезвию - отражения неона */
+.theme-feature-neon-reflections button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.5), transparent);
+    animation: neonReflection 3s linear infinite;
+}
+
+@keyframes neonReflection {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.theme-feature-city-lights::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, rgba(255, 107, 157, 0.2), transparent);
+    pointer-events: none;
+    z-index: 9996;
+    animation: cityLights 5s ease-in-out infinite;
+}
+
+@keyframes cityLights {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+/* Терминатор - красное сканирование */
+.theme-feature-red-scan::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.8), transparent);
+    pointer-events: none;
+    z-index: 9997;
+    animation: redScan 2s linear infinite;
+}
+
+@keyframes redScan {
+    0% { top: 0; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.theme-feature-terminator-eye button::before {
+    content: '🔴';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    opacity: 0;
+    animation: terminatorEye 3s ease-in-out infinite;
+}
+
+@keyframes terminatorEye {
+    0%, 90%, 100% { opacity: 0; }
+    5%, 85% { opacity: 1; }
+}
+
+/* Звёздные Войны - звёздное поле */
+.theme-feature-starfield::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 15% 25%, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1px 1px at 45% 65%, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 75% 15%, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 85% 85%, rgba(255, 255, 255, 0.6), transparent);
+    background-size: 400% 400%;
+    pointer-events: none;
+    z-index: 9996;
+    animation: starfieldMove 30s linear infinite, starfieldTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes starfieldMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+@keyframes starfieldTwinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.theme-feature-force .glow {
+    animation: forcePulse 2s ease-in-out infinite;
+}
+
+@keyframes forcePulse {
+    0%, 100% { text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080; }
+    50% { text-shadow: 0 0 30px #ff0080, 0 0 60px #ff0080, 0 0 90px #ff0080; }
+}
+
+/* Гарри Поттер - магические искры */
+.theme-feature-magic-sparks button::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 1em;
+    opacity: 0;
+    animation: magicSpark 1s ease-in-out infinite;
+}
+
+@keyframes magicSpark {
+    0%, 100% { opacity: 0; transform: translate(0, 0) scale(0); }
+    50% { opacity: 1; transform: translate(10px, -10px) scale(1.5); }
+}
+
+.theme-feature-wand-glow .achievement-card.unlocked {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 50px rgba(184, 134, 11, 0.3);
+}
+
+/* Безумный Макс - песчаная буря */
+.theme-feature-sandstorm::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(139, 69, 19, 0.1) 10px,
+        rgba(139, 69, 19, 0.1) 20px
+    );
+    pointer-events: none;
+    z-index: 9996;
+    animation: sandstormMove 5s linear infinite;
+}
+
+@keyframes sandstormMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+.theme-feature-wasteland button {
+    background: linear-gradient(135deg, #2d1a00, #4d3300);
+    border-color: #ff8800;
+    box-shadow: 0 0 20px rgba(255, 136, 0, 0.6);
+}
+
+/* Ведьмак - тёмная магия */
+.theme-feature-dark-magic button {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    border-color: #8b4513;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-feature-dark-magic button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(205, 133, 63, 0.3), transparent);
+    animation: darkMagicFlow 3s linear infinite;
+}
+
+@keyframes darkMagicFlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.theme-feature-sword-glow .achievement-card.unlocked {
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.8);
+}
+
+/* Властелин Колец - эльфийский свет */
+.theme-feature-elven-light::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(139, 115, 85, 0.3), transparent);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9996;
+    animation: elvenLight 4s ease-in-out infinite;
+}
+
+@keyframes elvenLight {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+.theme-feature-ring-power .glow {
+    animation: ringPower 3s ease-in-out infinite;
+}
+
+@keyframes ringPower {
+    0%, 100% { text-shadow: 0 0 10px #8b7355, 0 0 20px #8b7355; }
+    50% { text-shadow: 0 0 20px #8b7355, 0 0 40px #d4a574, 0 0 60px #d4a574; }
+}
+
+/* Чужой - пульс */
+.theme-feature-alien-pulse button {
+    animation: alienPulse 2s ease-in-out infinite;
+}
+
+@keyframes alienPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); }
+    50% { box-shadow: 0 0 40px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.8); }
+}
+
+.theme-feature-acid-drip::after {
+    content: '💚';
+    position: fixed;
+    top: -50px;
+    left: 20%;
+    font-size: 1em;
+    opacity: 0.5;
+    animation: acidDrip 3s linear infinite;
+    pointer-events: none;
+    z-index: 9996;
+}
+
+@keyframes acidDrip {
+    0% { top: -50px; opacity: 0.5; }
+    100% { top: 100vh; opacity: 0; }
+}
+
+/* Интерстеллар - чёрная дыра и червоточина */
+.theme-feature-black-hole::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0.05), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9996;
+    animation: blackHoleRotate 10s linear infinite;
+}
+
+@keyframes blackHoleRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+}
+
+.theme-feature-wormhole::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent, rgba(255, 255, 0, 0.1));
+    pointer-events: none;
+    z-index: 9995;
+    animation: wormholeDistort 5s ease-in-out infinite;
+}
+
+@keyframes wormholeDistort {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.2; }
+}
+
+/* Вампир - кровавый туман */
+.theme-feature-blood-mist::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.2), transparent),
+                radial-gradient(circle at 80% 50%, rgba(204, 0, 0, 0.15), transparent);
+    pointer-events: none;
+    z-index: 9996;
+    animation: bloodMist 8s ease-in-out infinite;
+}
+
+@keyframes bloodMist {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.theme-feature-night-shadows button {
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.8), inset 0 0 15px rgba(204, 0, 0, 0.3);
+}
+
+/* Хищник - тепловое зрение */
+.theme-feature-thermal-vision .info-card,
+.theme-feature-thermal-vision .stat-card {
+    filter: sepia(100%) saturate(200%) hue-rotate(20deg);
+    position: relative;
+}
+
+.theme-feature-thermal-vision .info-card::before,
+.theme-feature-thermal-vision .stat-card::before {
+    content: '🎯';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    opacity: 0.6;
+    animation: thermalTarget 2s ease-in-out infinite;
+}
+
+@keyframes thermalTarget {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.theme-feature-jungle::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(5px 5px at 10% 20%, rgba(0, 255, 0, 0.2), transparent),
+        radial-gradient(3px 3px at 90% 80%, rgba(34, 139, 34, 0.15), transparent);
+    pointer-events: none;
+    z-index: 9996;
+    animation: jungleMove 15s linear infinite;
+}
+
+@keyframes jungleMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* Зомби - токсичный зелёный */
+.theme-feature-toxic-green button {
+    background: linear-gradient(135deg, #1a1a0d, #2d2d1a);
+    border-color: #66ff00;
+    box-shadow: 0 0 25px rgba(102, 255, 0, 0.8);
+    position: relative;
+}
+
+.theme-feature-toxic-green button::after {
+    content: '☢️';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    animation: toxicPulse 2s ease-in-out infinite;
+}
+
+@keyframes toxicPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+.theme-feature-decay .achievement-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-feature-decay .achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 255, 0, 0.2), transparent);
+    animation: decayScan 3s linear infinite;
+}
+
+@keyframes decayScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Призраки - туман */
+.theme-feature-ghost-mist::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+    z-index: 9996;
+    animation: ghostMist 10s ease-in-out infinite;
+}
+
+@keyframes ghostMist {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.theme-feature-ethereal button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-color: rgba(255, 255, 255, 0.5);
+    animation: etherealFloat 4s ease-in-out infinite;
+}
+
+@keyframes etherealFloat {
+    0%, 100% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Ниндзя - тень и дым */
+.theme-feature-shadow-strike button:active {
+    transform: scale(0.95);
+    filter: blur(2px);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+}
+
+.theme-feature-smoke::after {
+    content: '💨';
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 9996;
+    animation: smokeRise 5s ease-in-out infinite;
+}
+
+@keyframes smokeRise {
+    0% { bottom: 20px; opacity: 0.3; transform: translateX(-50%) translateY(0); }
+    100% { bottom: 100vh; opacity: 0; transform: translateX(-50%) translateY(-50px); }
+}
+
+/* Аниме - энергетический взрыв */
+.theme-feature-energy-burst button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.6), transparent);
+    transform: translate(-50%, -50%);
+    animation: energyBurst 1.5s ease-out infinite;
+}
+
+@keyframes energyBurst {
+    0% { width: 0; height: 0; opacity: 1; }
+    100% { width: 300px; height: 300px; opacity: 0; }
+}
+
+.theme-feature-anime-glow .glow {
+    animation: animeGlow 2s ease-in-out infinite;
+}
+
+@keyframes animeGlow {
+    0%, 100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+    50% { text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff69b4, 0 0 90px #ff69b4; }
+}
+
+/* Готика - фиолетовое пламя */
+.theme-feature-purple-flame button {
+    background: linear-gradient(135deg, #1a001a, #330033);
+    border-color: #ff00ff;
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), 0 0 50px rgba(255, 0, 255, 0.4);
+    animation: purpleFlame 1s ease-in-out infinite;
+}
+
+@keyframes purpleFlame {
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), 0 0 50px rgba(255, 0, 255, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(255, 0, 255, 1), 0 0 80px rgba(255, 0, 255, 0.6); }
+}
+
+.theme-feature-gothic-architecture::before {
+    content: '🏰';
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 3em;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 9996;
+    animation: gothicArch 5s ease-in-out infinite;
+}
+
+@keyframes gothicArch {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+    50% { transform: scale(1.1) rotate(2deg); opacity: 0.4; }
+}
+
+/* Нуар - зерно плёнки */
+.theme-feature-film-grain::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+    z-index: 9996;
+    opacity: 0.5;
+}
+
+.theme-feature-vignette::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.5) 100%);
+    pointer-events: none;
+    z-index: 9996;
+}
+
+/* Стимпанк - шестерни и пар */
+.theme-feature-gears::before {
+    content: '⚙️⚙️⚙️';
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 2em;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 9996;
+    animation: gearsRotate 3s linear infinite;
+}
+
+@keyframes gearsRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.theme-feature-steam::after {
+    content: '💨';
+    position: fixed;
+    bottom: 50px;
+    left: 10%;
+    font-size: 1.5em;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 9996;
+    animation: steamRise 4s ease-in-out infinite;
+}
+
+@keyframes steamRise {
+    0% { bottom: 50px; opacity: 0.4; transform: translateY(0); }
+    100% { bottom: 100vh; opacity: 0; transform: translateY(-100px); }
+}
+
+/* Неоновая Ночь - полосы неона */
+.theme-feature-neon-streaks::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 50px,
+        rgba(0, 255, 255, 0.1) 50px,
+        rgba(0, 255, 255, 0.1) 51px
+    );
+    pointer-events: none;
+    z-index: 9996;
+    animation: neonStreaks 5s linear infinite;
+}
+
+@keyframes neonStreaks {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50px); }
+}
+
+.theme-feature-night-city::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0, 0, 51, 0.5), transparent);
+    pointer-events: none;
+    z-index: 9995;
+}
+
+/* Тёмные темы - пульсация */
+.theme-feature-purple-void button,
+.theme-feature-blue-depths button,
+.theme-feature-green-shadow button,
+.theme-feature-red-darkness button,
+.theme-feature-orange-ember button,
+.theme-feature-yellow-glow button {
+    animation: darkPulse 2s ease-in-out infinite;
+}
+
+@keyframes darkPulse {
+    0%, 100% { box-shadow: 0 0 15px currentColor; }
+    50% { box-shadow: 0 0 30px currentColor, 0 0 45px currentColor; }
+}
+
+.theme-feature-dark-pulse .glow {
+    animation: darkPulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes darkPulseGlow {
+    0%, 100% { text-shadow: 0 0 10px currentColor, 0 0 20px currentColor; }
+    50% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor; }
+}
+
+.theme-feature-forest-night::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.1), transparent);
+    pointer-events: none;
+    z-index: 9996;
+    animation: forestNight 8s ease-in-out infinite;
+}
+
+@keyframes forestNight {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.theme-feature-blood-red button {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.theme-feature-fire-dark button {
+    background: linear-gradient(135deg, #331a00, #4d2600);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.8);
+}
+
+.theme-feature-golden-dark button {
+    background: linear-gradient(135deg, #332200, #4d3300);
+    box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+}

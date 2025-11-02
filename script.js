@@ -1147,30 +1147,158 @@ function applyThemeFeatures(themeId) {
     // Удаляем все предыдущие классы эффектов
     document.body.className = document.body.className.replace(/theme-feature-\w+/g, '');
     
-    // Удаляем overlay эффекты предыдущих тем
-    const oldMatrixCode = document.getElementById('matrixCode');
-    if (oldMatrixCode) oldMatrixCode.remove();
+    // Удаляем все overlay эффекты предыдущих тем
+    const overlays = ['matrixCode', 'particlesOverlay', 'sakuraOverlay', 'starsOverlay', 'fireOverlay', 'oceanOverlay', 'forestOverlay'];
+    overlays.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+    });
     
     // Применяем уникальные эффекты для каждой темы
     const featureMap = {
         'matrix': () => {
-            // Падающий код для Матрицы
             const code = document.createElement('div');
             code.id = 'matrixCode';
             code.className = 'matrix-code-overlay';
             document.body.appendChild(code);
+            document.body.classList.add('theme-feature-matrix-rain');
         },
         'cyberpunk': () => {
-            document.body.classList.add('theme-feature-scanlines');
+            document.body.classList.add('theme-feature-scanlines', 'theme-feature-neon-pulse');
         },
         'tron': () => {
-            document.body.classList.add('theme-feature-grid');
+            document.body.classList.add('theme-feature-grid', 'theme-feature-tron-lines');
         },
         'void': () => {
-            document.body.classList.add('theme-feature-fade');
+            document.body.classList.add('theme-feature-fade', 'theme-feature-void-glow');
         },
         'rainbow': () => {
-            document.body.classList.add('theme-feature-shift');
+            document.body.classList.add('theme-feature-shift', 'theme-feature-rainbow-wave');
+        },
+        'neon': () => {
+            document.body.classList.add('theme-feature-neon-glow', 'theme-feature-neon-pulse');
+        },
+        'space': () => {
+            const stars = document.createElement('div');
+            stars.id = 'starsOverlay';
+            stars.className = 'space-stars-overlay';
+            document.body.appendChild(stars);
+            document.body.classList.add('theme-feature-stars-twinkle');
+        },
+        'pixel': () => {
+            document.body.classList.add('theme-feature-pixel-dither', 'theme-feature-8bit');
+        },
+        'japanese': () => {
+            const sakura = document.createElement('div');
+            sakura.id = 'sakuraOverlay';
+            sakura.className = 'sakura-overlay';
+            document.body.appendChild(sakura);
+            document.body.classList.add('theme-feature-sakura-fall');
+        },
+        'gold': () => {
+            document.body.classList.add('theme-feature-gold-sparkle', 'theme-feature-luxury');
+        },
+        'ocean': () => {
+            const ocean = document.createElement('div');
+            ocean.id = 'oceanOverlay';
+            ocean.className = 'ocean-waves-overlay';
+            document.body.appendChild(ocean);
+            document.body.classList.add('theme-feature-ocean-wave');
+        },
+        'forest': () => {
+            const particles = document.createElement('div');
+            particles.id = 'particlesOverlay';
+            particles.className = 'forest-particles-overlay';
+            document.body.appendChild(particles);
+            document.body.classList.add('theme-feature-forest-breeze');
+        },
+        'fire': () => {
+            const fire = document.createElement('div');
+            fire.id = 'fireOverlay';
+            fire.className = 'fire-overlay';
+            document.body.appendChild(fire);
+            document.body.classList.add('theme-feature-fire-flicker');
+        },
+        'ice': () => {
+            document.body.classList.add('theme-feature-ice-crystals', 'theme-feature-frost');
+        },
+        'batman': () => {
+            document.body.classList.add('theme-feature-bat-signal', 'theme-feature-gothic');
+        },
+        'bladerunner': () => {
+            document.body.classList.add('theme-feature-neon-reflections', 'theme-feature-city-lights');
+        },
+        'terminator': () => {
+            document.body.classList.add('theme-feature-red-scan', 'theme-feature-terminator-eye');
+        },
+        'starwars': () => {
+            document.body.classList.add('theme-feature-starfield', 'theme-feature-force');
+        },
+        'harrypotter': () => {
+            document.body.classList.add('theme-feature-magic-sparks', 'theme-feature-wand-glow');
+        },
+        'madmax': () => {
+            document.body.classList.add('theme-feature-sandstorm', 'theme-feature-wasteland');
+        },
+        'witcher': () => {
+            document.body.classList.add('theme-feature-dark-magic', 'theme-feature-sword-glow');
+        },
+        'lotr': () => {
+            document.body.classList.add('theme-feature-elven-light', 'theme-feature-ring-power');
+        },
+        'alien': () => {
+            document.body.classList.add('theme-feature-alien-pulse', 'theme-feature-acid-drip');
+        },
+        'interstellar': () => {
+            document.body.classList.add('theme-feature-black-hole', 'theme-feature-wormhole');
+        },
+        'vampire': () => {
+            document.body.classList.add('theme-feature-blood-mist', 'theme-feature-night-shadows');
+        },
+        'predator': () => {
+            document.body.classList.add('theme-feature-thermal-vision', 'theme-feature-jungle');
+        },
+        'zombie': () => {
+            document.body.classList.add('theme-feature-toxic-green', 'theme-feature-decay');
+        },
+        'ghost': () => {
+            document.body.classList.add('theme-feature-ghost-mist', 'theme-feature-ethereal');
+        },
+        'ninja': () => {
+            document.body.classList.add('theme-feature-shadow-strike', 'theme-feature-smoke');
+        },
+        'anime': () => {
+            document.body.classList.add('theme-feature-energy-burst', 'theme-feature-anime-glow');
+        },
+        'gothic': () => {
+            document.body.classList.add('theme-feature-purple-flame', 'theme-feature-gothic-architecture');
+        },
+        'noir': () => {
+            document.body.classList.add('theme-feature-film-grain', 'theme-feature-vignette');
+        },
+        'steampunk': () => {
+            document.body.classList.add('theme-feature-gears', 'theme-feature-steam');
+        },
+        'neon_night': () => {
+            document.body.classList.add('theme-feature-neon-streaks', 'theme-feature-night-city');
+        },
+        'dark_purple': () => {
+            document.body.classList.add('theme-feature-purple-void', 'theme-feature-dark-pulse');
+        },
+        'dark_blue': () => {
+            document.body.classList.add('theme-feature-blue-depths', 'theme-feature-abyss');
+        },
+        'dark_green': () => {
+            document.body.classList.add('theme-feature-green-shadow', 'theme-feature-forest-night');
+        },
+        'dark_red': () => {
+            document.body.classList.add('theme-feature-red-darkness', 'theme-feature-blood-red');
+        },
+        'dark_orange': () => {
+            document.body.classList.add('theme-feature-orange-ember', 'theme-feature-fire-dark');
+        },
+        'dark_yellow': () => {
+            document.body.classList.add('theme-feature-yellow-glow', 'theme-feature-golden-dark');
         }
     };
     
