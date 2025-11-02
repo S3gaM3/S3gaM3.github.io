@@ -331,6 +331,17 @@ h1 {
     }
 }
 
+/* Замедление анимаций статусного текста на мобильных в 10 раз */
+@media (max-width: 768px) {
+    .status-text {
+        animation-duration: 20s !important; /* 2s * 10 = 20s */
+    }
+    
+    .breathing {
+        animation-duration: 30s !important; /* 3s * 10 = 30s */
+    }
+}
+
 /* Информация */
 .info-section {
     display: grid;
