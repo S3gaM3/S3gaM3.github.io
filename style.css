@@ -334,11 +334,15 @@ h1 {
 /* Замедление анимаций статусного текста на мобильных в 10 раз */
 @media (max-width: 768px) {
     .status-text {
-        animation-duration: 20s !important; /* 2s * 10 = 20s */
+        animation: statusPulse 40s ease-in-out infinite !important; /* 2s * 20 = 40s для ещё большего замедления */
+    }
+    
+    .status-text.breathing {
+        animation: breathing 60s ease-in-out infinite !important; /* 3s * 20 = 60s, только одна медленная анимация */
     }
     
     .breathing {
-        animation-duration: 30s !important; /* 3s * 10 = 30s */
+        animation-duration: 60s !important; /* 3s * 20 = 60s для ещё большего замедления */
     }
 }
 
