@@ -192,6 +192,21 @@ h1 {
     justify-content: center;
 }
 
+/* Оптимизация number-wrapper для маленьких экранов */
+@media (max-width: 480px) {
+    .number-wrapper {
+        height: 50px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .number-wrapper {
+        height: 40px;
+        margin-bottom: 6px;
+    }
+}
+
 .number {
     font-size: 3.5em;
     font-weight: bold;
@@ -231,6 +246,20 @@ h1 {
     font-size: 1.5em;
     opacity: 0.5;
     transition: all 0.3s;
+}
+
+@media (max-width: 480px) {
+    .time-decoration {
+        font-size: 1em;
+        top: 3px;
+        right: 3px;
+    }
+}
+
+@media (max-width: 360px) {
+    .time-decoration {
+        display: none;
+    }
 }
 
 @keyframes decorationSpin {
@@ -571,6 +600,32 @@ h1 {
     border: 4px solid #00ff00;
     color: #00ff00;
     font-family: 'Courier New', monospace;
+}
+
+@media (max-width: 480px) {
+    .arena-game, .mushroom-game {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    
+    /* Переопределяем inline стили для сеток на маленьких экранах */
+    .arena-game > div[style*="grid-template-columns"],
+    .mushroom-game > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    
+    /* Оптимизация списков героев и грибов */
+    #heroesList {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    
+    #equipmentList,
+    #collectionList {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+        gap: 8px !important;
+    }
 }
 
 .hero-card, .mushroom-card {
@@ -2652,18 +2707,25 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
     }
     
     .countdown { 
-        gap: 10px; 
+        gap: 8px; 
         flex-wrap: wrap;
+        justify-content: center;
     }
     
     .time-unit { 
-        min-width: 80px; 
-        padding: 15px;
-        min-height: 120px;
+        min-width: 70px; 
+        padding: 12px 10px;
+        min-height: 100px;
+        flex: 1 1 calc(25% - 6px);
+        max-width: calc(25% - 6px);
     }
     
     .number { 
-        font-size: 2em; 
+        font-size: 1.8em; 
+    }
+    
+    .label {
+        font-size: 0.9em;
     }
     
     .achievements-grid { 
@@ -2778,44 +2840,229 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px;
-        padding-left: max(10px, env(safe-area-inset-left));
-        padding-right: max(10px, env(safe-area-inset-right));
+        padding: 8px;
+        padding-left: max(8px, env(safe-area-inset-left));
+        padding-right: max(8px, env(safe-area-inset-right));
     }
     
     h1 {
-        font-size: 1.5em;
+        font-size: 1.3em;
+        line-height: 1.3;
+        word-break: break-word;
     }
     
     header {
-        padding: 10px;
+        padding: 10px 8px;
+        margin-bottom: 10px;
+        border-width: 2px;
     }
     
     .quick-nav {
-        display: none; /* Скрываем на очень маленьких экранах */
+        display: none;
     }
     
     .time-unit {
-        min-width: 70px;
-        padding: 12px;
-        min-height: 100px;
+        min-width: 60px;
+        padding: 10px 8px;
+        min-height: 90px;
+        flex: 1 1 calc(50% - 3px);
+        max-width: calc(50% - 3px);
+    }
+    
+    .time-unit .number-wrapper {
+        height: 50px;
     }
     
     .number {
-        font-size: 1.8em;
+        font-size: 1.5em;
+    }
+    
+    .label {
+        font-size: 0.85em;
     }
     
     .countdown {
-        gap: 8px;
+        gap: 6px;
+        justify-content: space-between;
     }
     
     button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn {
-        padding: 12px 15px;
-        font-size: 1em;
+        padding: 10px 12px;
+        font-size: 0.9em;
+        min-height: 44px;
+        word-wrap: break-word;
+        white-space: normal;
     }
     
     .glow {
-        font-size: 1.3em;
+        font-size: 1.2em;
+        line-height: 1.3;
+        word-wrap: break-word;
+    }
+    
+    /* Оптимизация секций */
+    .countdown-section,
+    .achievements-section,
+    .gacha-section,
+    .shop-section,
+    .stats-section,
+    .events-section,
+    .music-section,
+    .fun-section,
+    .quotes-section,
+    .collection-section,
+    .minigames-section,
+    .leaderboard-section,
+    .gallery-section,
+    .history-section,
+    .weekly-section,
+    .special-events-section {
+        padding: 15px 10px;
+        border-width: 2px;
+        margin-bottom: 12px;
+    }
+    
+    /* Улучшаем карточки */
+    .info-card,
+    .stat-card,
+    .event-card,
+    .achievement-card {
+        padding: 12px;
+        border-width: 3px;
+    }
+    
+    .info-card h3,
+    .stat-card h3 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    /* Оптимизация сеток */
+    .info-section,
+    .stats-grid,
+    .events-grid,
+    .achievements-grid,
+    .games-grid,
+    .minigames-grid,
+    .fun-grid {
+        gap: 10px;
+    }
+    
+    .games-grid,
+    .minigames-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Улучшаем кнопки действий */
+    .shop-toggle-btn,
+    .music-btn,
+    .event-btn,
+    .quote-btn {
+        font-size: 0.85em;
+        padding: 10px 12px;
+    }
+    
+    /* Accordion заголовки */
+    .accordion-header {
+        padding: 12px 10px;
+        min-height: 44px;
+    }
+    
+    .accordion-header .glow {
+        font-size: 1.1em;
+    }
+    
+    /* Прогресс бары */
+    .progress-bar {
+        height: 20px;
+    }
+    
+    .progress-bar-small {
+        height: 15px;
+    }
+    
+    /* Улучшаем текст */
+    p, .stat-desc, .event-desc {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+    
+    .marquee {
+        font-size: 0.95em;
+    }
+    
+    .japanese-decoration {
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+    
+    /* Оптимизация для счетчика времени - 2 колонки на маленьких экранах */
+    .countdown {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .time-unit {
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+    
+    /* Таблицы и списки */
+    .leaderboard-content,
+    .history-timeline {
+        font-size: 0.9em;
+    }
+    
+    /* Модальные окна */
+    .theme-shop-modal {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    /* Гачи-игры интерфейс */
+    .game-area {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    
+    .hero-card,
+    .mushroom-card {
+        padding: 12px;
+        border-width: 3px;
+        font-size: 0.85em;
+    }
+    
+    /* Оптимизация игровых интерфейсов */
+    .arena-game > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    
+    .mushroom-game > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    
+    /* Компактные кнопки в играх */
+    .arena-game .music-btn,
+    .mushroom-game .music-btn {
+        font-size: 0.8em;
+        padding: 8px 10px;
+        margin-bottom: 4px;
+    }
+    
+    /* Улучшаем отображение статистики */
+    .hero-card h3,
+    .mushroom-card h3 {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+    
+    .hero-card > div,
+    .mushroom-card > div {
+        font-size: 0.85em;
+        margin-bottom: 5px;
     }
 }
 
@@ -2845,6 +3092,179 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
     
     .number {
         font-size: 1.8em;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+    .container {
+        padding: 6px;
+        padding-left: max(6px, env(safe-area-inset-left));
+        padding-right: max(6px, env(safe-area-inset-right));
+    }
+    
+    h1 {
+        font-size: 1.1em;
+    }
+    
+    header {
+        padding: 8px 6px;
+    }
+    
+    .time-unit {
+        min-width: 55px;
+        padding: 8px 6px;
+        min-height: 80px;
+        flex: 1 1 calc(50% - 3px);
+    }
+    
+    .number {
+        font-size: 1.3em;
+    }
+    
+    .label {
+        font-size: 0.75em;
+    }
+    
+    .countdown {
+        gap: 4px;
+    }
+    
+    button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+    
+    .glow {
+        font-size: 1.1em;
+    }
+    
+    /* Еще более компактные секции */
+    .countdown-section,
+    .achievements-section,
+    .gacha-section,
+    .shop-section,
+    .stats-section,
+    .events-section {
+        padding: 12px 8px;
+    }
+    
+    .info-card,
+    .stat-card,
+    .event-card {
+        padding: 10px;
+    }
+    
+    /* Уменьшаем отступы в сетках */
+    .info-section,
+    .stats-grid,
+    .events-grid,
+    .achievements-grid {
+        gap: 8px;
+    }
+    
+    /* Компактные кнопки */
+    .accordion-header {
+        padding: 10px 8px;
+    }
+    
+    .accordion-header .glow {
+        font-size: 1em;
+    }
+    
+    /* Улучшаем читаемость */
+    p, .stat-desc, .event-desc {
+        font-size: 0.85em;
+    }
+    
+    /* Компактный scroll-to-top */
+    .scroll-to-top {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3em;
+        bottom: max(15px, env(safe-area-inset-bottom));
+        right: max(15px, env(safe-area-inset-right));
+    }
+}
+
+/* Экстремально маленькие экраны (до 320px) */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1em;
+    }
+    
+    .time-unit {
+        min-width: 50px;
+        padding: 6px 4px;
+        min-height: 75px;
+    }
+    
+    .number {
+        font-size: 1.2em;
+    }
+    
+    .countdown {
+        gap: 3px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+    
+    .glow {
+        font-size: 1em;
+    }
+    
+    /* Максимально компактные секции */
+    main > div {
+        margin-bottom: 10px;
+    }
+    
+    /* Убираем лишние отступы */
+    .info-section,
+    .stats-grid,
+    .events-grid {
+        gap: 6px;
+    }
+    
+    /* Скрываем декоративные элементы на очень маленьких экранах */
+    .time-decoration,
+    .japanese-decoration {
+        display: none;
+    }
+    
+    /* Дополнительные оптимизации для очень маленьких экранов */
+    .countdown-section h2,
+    .achievements-section h2,
+    .gacha-section h2,
+    .shop-section h2,
+    .stats-section h2,
+    .events-section h2 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    /* Компактные цитаты */
+    .quote-card {
+        padding: 15px;
+    }
+    
+    .quote-text {
+        font-size: 1.1em;
+    }
+    
+    /* Компактные лидерборды */
+    .leaderboard-item {
+        padding: 10px;
+        font-size: 0.85em;
+    }
+    
+    /* Компактная история */
+    .history-item {
+        padding: 10px;
+        font-size: 0.85em;
     }
 }
 

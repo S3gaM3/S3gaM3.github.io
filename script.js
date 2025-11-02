@@ -1462,8 +1462,10 @@ function startArena() {
     const playerLevel = Math.floor(arenaXP / arenaXPToNext) + 1;
     const currentXP = arenaXP % arenaXPToNext;
     
+    const isMobile = window.innerWidth <= 480;
+    const gridCols = isMobile ? '1fr' : '1fr 1fr 1fr';
     gameArea.innerHTML = `
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+        <div style="display: grid; grid-template-columns: ${gridCols}; gap: 15px; margin-bottom: 20px;">
             <div class="hero-card">
                 <h3>💰 РЕСУРСЫ</h3>
                 <div>💰 Монеты: <span id="arenaCoins">${arenaCoins.toLocaleString()}</span></div>
@@ -2881,8 +2883,10 @@ function startMushrooms() {
     
     const totalPower = mushroomCollection.reduce((sum, m) => sum + (m.power || 0), 0) + mushroomPower;
     
+    const isMobile = window.innerWidth <= 480;
+    const gridCols = isMobile ? '1fr' : '1fr 1fr';
     gameArea.innerHTML = `
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+        <div style="display: grid; grid-template-columns: ${gridCols}; gap: 15px; margin-bottom: 20px;">
             <div class="mushroom-card">
                 <h3>💰 СТАТИСТИКА</h3>
                 <div>💰 Монеты: <span id="mushroomCoins">${mushroomCoins.toLocaleString()}</span></div>
