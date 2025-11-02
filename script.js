@@ -1478,7 +1478,11 @@ function startArena() {
             <div class="hero-card">
                 <h3>🎮 ДЕЙСТВИЯ</h3>
                 <button class="music-btn" onclick="arenaSummon()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">🎴 ПРИЗВАТЬ (100💰)</button>
+                <button class="music-btn" onclick="arenaSummonX10()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">🎴 x10 (900💰)</button>
+                <button class="music-btn" onclick="arenaSummonX100()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">🎴 x100 (9000💰)</button>
                 <button class="music-btn" onclick="arenaSummonPremium()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">💎 ПРЕМИУМ (10💎)</button>
+                <button class="music-btn" onclick="arenaSummonPremiumX10()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">💎 x10 (90💎)</button>
+                <button class="music-btn" onclick="arenaSummonPremiumX100()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">💎 x100 (900💎)</button>
                 <button class="music-btn" onclick="startArenaBattle()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">⚔️ БИТВА</button>
                 <button class="music-btn" onclick="showArenaTeam()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">👥 КОМАНДА</button>
                 <button class="music-btn" onclick="showArenaTournament()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">🏆 ТУРНИР</button>
@@ -1934,6 +1938,100 @@ function arenaSummonPremium() {
     arenaCrystals -= 10;
     summonHero(true);
     checkAchievements();
+}
+
+function arenaSummonX10() {
+    const cost = 900; // Скидка за массовую покупку
+    if (arenaCoins < cost) {
+        alert(`Недостаточно монет! Нужно ${cost}💰`);
+        return;
+    }
+    
+    arenaCoins -= cost;
+    for (let i = 0; i < 10; i++) {
+        summonHero(false);
+    }
+    
+    // Обновление миссий и квестов
+    arenaMissions.forEach(m => {
+        if (m.type === 'summon' && !m.completed) {
+            m.current += 10;
+        }
+    });
+    arenaQuests.forEach(q => {
+        if (q.type === 'summon' && !q.completed) {
+            q.current = (q.current || 0) + 10;
+        }
+    });
+    checkAchievements();
+    saveArenaData();
+    updateArenaUI();
+    renderArenaHeroes();
+    alert('🎴 Призвано 10 героев!');
+}
+
+function arenaSummonX100() {
+    const cost = 9000; // Скидка за массовую покупку
+    if (arenaCoins < cost) {
+        alert(`Недостаточно монет! Нужно ${cost}💰`);
+        return;
+    }
+    
+    arenaCoins -= cost;
+    for (let i = 0; i < 100; i++) {
+        summonHero(false);
+    }
+    
+    // Обновление миссий и квестов
+    arenaMissions.forEach(m => {
+        if (m.type === 'summon' && !m.completed) {
+            m.current += 100;
+        }
+    });
+    arenaQuests.forEach(q => {
+        if (q.type === 'summon' && !q.completed) {
+            q.current = (q.current || 0) + 100;
+        }
+    });
+    checkAchievements();
+    saveArenaData();
+    updateArenaUI();
+    renderArenaHeroes();
+    alert('🎴 Призвано 100 героев!');
+}
+
+function arenaSummonPremiumX10() {
+    const cost = 90; // Скидка за массовую покупку
+    if (arenaCrystals < cost) {
+        alert(`Недостаточно кристаллов! Нужно ${cost}💎`);
+        return;
+    }
+    
+    arenaCrystals -= cost;
+    for (let i = 0; i < 10; i++) {
+        summonHero(true);
+    }
+    checkAchievements();
+    updateArenaUI();
+    renderArenaHeroes();
+    alert('💎 Призвано 10 премиум героев!');
+}
+
+function arenaSummonPremiumX100() {
+    const cost = 900; // Скидка за массовую покупку
+    if (arenaCrystals < cost) {
+        alert(`Недостаточно кристаллов! Нужно ${cost}💎`);
+        return;
+    }
+    
+    arenaCrystals -= cost;
+    for (let i = 0; i < 100; i++) {
+        summonHero(true);
+    }
+    checkAchievements();
+    updateArenaUI();
+    renderArenaHeroes();
+    alert('💎 Призвано 100 премиум героев!');
 }
 
 function summonHero(isPremium) {
@@ -2844,8 +2942,14 @@ function startMushrooms() {
             </div>
             <div class="mushroom-card">
                 <h3>🎴 Призывы</h3>
-                <button class="music-btn" onclick="summonMushroom()" style="width: 100%; margin-bottom: 10px;">
+                <button class="music-btn" onclick="summonMushroom()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">
                     🍄 Призвать гриб - 100💰
+                </button>
+                <button class="music-btn" onclick="summonMushroomX10()" style="width: 100%; margin-bottom: 5px; font-size: 0.9em;">
+                    🍄 x10 - 900💰
+                </button>
+                <button class="music-btn" onclick="summonMushroomX100()" style="width: 100%; margin-bottom: 10px; font-size: 0.9em;">
+                    🍄 x100 - 9000💰
                 </button>
                 <button class="music-btn" onclick="evolveMushrooms()" style="width: 100%;">
                     ✨ Эволюция (${mushroomCollection.length} шт.)
@@ -2954,6 +3058,106 @@ function summonMushroom() {
     
     const rarityEmoji = mushroom.rarity === 'legendary' ? '🌟' : mushroom.rarity === 'epic' ? '💜' : mushroom.rarity === 'rare' ? '💎' : '⚪';
     alert(`${mushroom.type} Получен ${mushroom.name}! ${rarityEmoji}\n+${powerBonus} к силе!`);
+}
+
+function summonMushroomX10() {
+    const cost = 900; // Скидка за массовую покупку
+    if (mushroomCoins < cost) {
+        alert(`Недостаточно монет! Нужно ${cost}💰`);
+        return;
+    }
+    
+    mushroomCoins -= cost;
+    let totalPower = 0;
+    let legendaryCount = 0;
+    let epicCount = 0;
+    let rareCount = 0;
+    
+    for (let i = 0; i < 10; i++) {
+        const types = ['🍄', '🍄', '🍄', '🍄', '🍄', '🟫', '🔴', '🟣', '🟡', '🔵'];
+        const names = ['Обычный гриб', 'Коричневый гриб', 'Красный гриб', 'Фиолетовый гриб', 'Жёлтый гриб', 'Синий гриб'];
+        const powerBonus = Math.floor(Math.random() * 20) + 5;
+        
+        const typeIndex = Math.random() < 0.7 ? 0 : Math.floor(Math.random() * (types.length - 1)) + 1;
+        const mushroom = {
+            id: Date.now() + i,
+            type: types[typeIndex],
+            name: names[typeIndex] || 'Редкий гриб',
+            power: powerBonus,
+            level: 1,
+            rarity: typeIndex === 0 ? 'common' : typeIndex < 3 ? 'rare' : typeIndex < 5 ? 'epic' : 'legendary'
+        };
+        
+        mushroomCollection.push(mushroom);
+        mushroomPower += powerBonus;
+        totalPower += powerBonus;
+        
+        if (mushroom.rarity === 'legendary') legendaryCount++;
+        else if (mushroom.rarity === 'epic') epicCount++;
+        else if (mushroom.rarity === 'rare') rareCount++;
+    }
+    
+    // Обновление квестов
+    mushroomQuests.forEach(q => {
+        if (q.type === 'summon' && !q.completed) {
+            q.current = (q.current || 0) + 10;
+        }
+    });
+    checkAchievements();
+    updateMushroomUI();
+    saveMushroomData();
+    
+    alert(`🍄 Призвано 10 грибов!\n+${totalPower} к силе!\n🌟 Легендарных: ${legendaryCount}\n💜 Эпических: ${epicCount}\n💎 Редких: ${rareCount}`);
+}
+
+function summonMushroomX100() {
+    const cost = 9000; // Скидка за массовую покупку
+    if (mushroomCoins < cost) {
+        alert(`Недостаточно монет! Нужно ${cost}💰`);
+        return;
+    }
+    
+    mushroomCoins -= cost;
+    let totalPower = 0;
+    let legendaryCount = 0;
+    let epicCount = 0;
+    let rareCount = 0;
+    
+    for (let i = 0; i < 100; i++) {
+        const types = ['🍄', '🍄', '🍄', '🍄', '🍄', '🟫', '🔴', '🟣', '🟡', '🔵'];
+        const names = ['Обычный гриб', 'Коричневый гриб', 'Красный гриб', 'Фиолетовый гриб', 'Жёлтый гриб', 'Синий гриб'];
+        const powerBonus = Math.floor(Math.random() * 20) + 5;
+        
+        const typeIndex = Math.random() < 0.7 ? 0 : Math.floor(Math.random() * (types.length - 1)) + 1;
+        const mushroom = {
+            id: Date.now() + i,
+            type: types[typeIndex],
+            name: names[typeIndex] || 'Редкий гриб',
+            power: powerBonus,
+            level: 1,
+            rarity: typeIndex === 0 ? 'common' : typeIndex < 3 ? 'rare' : typeIndex < 5 ? 'epic' : 'legendary'
+        };
+        
+        mushroomCollection.push(mushroom);
+        mushroomPower += powerBonus;
+        totalPower += powerBonus;
+        
+        if (mushroom.rarity === 'legendary') legendaryCount++;
+        else if (mushroom.rarity === 'epic') epicCount++;
+        else if (mushroom.rarity === 'rare') rareCount++;
+    }
+    
+    // Обновление квестов
+    mushroomQuests.forEach(q => {
+        if (q.type === 'summon' && !q.completed) {
+            q.current = (q.current || 0) + 100;
+        }
+    });
+    checkAchievements();
+    updateMushroomUI();
+    saveMushroomData();
+    
+    alert(`🍄 Призвано 100 грибов!\n+${totalPower} к силе!\n🌟 Легендарных: ${legendaryCount}\n💜 Эпических: ${epicCount}\n💎 Редких: ${rareCount}`);
 }
 
 function showMushroomCollection() {
