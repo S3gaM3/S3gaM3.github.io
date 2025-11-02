@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎖️ ЕГОР ВЕРНЁТСЯ! 🎖️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Анимированный заголовок -->
+        <header>
+            <h1 class="blink pixel-text">🎖️ ЕГОР ВЕРНЁТСЯ! 🎖️</h1>
+            <div class="marquee pixel-text">
+                <span>⭐ СКОРО ЕГОР БУДЕТ ДОМА! ⭐ ДОЛГОЖДАННОЕ ВОЗВРАЩЕНИЕ! ⭐</span>
+            </div>
+            <div class="japanese-decoration">武士道 • 忠誠 • 栄光</div>
+        </header>
+
+        <!-- Основной блок с отсчётом -->
+        <main>
+            <div class="countdown-section" id="countdown-section">
+                <h2 class="glow">ОТСЧЁТ ДО ВОЗВРАЩЕНИЯ</h2>
+                <div id="countdown" class="countdown">
+                    <div class="time-unit" data-time="days">
+                        <div class="number-wrapper">
+                            <div class="number" id="days">0</div>
+                        </div>
+                        <div class="label">ДНЕЙ</div>
+                        <div class="time-decoration">✨</div>
+                    </div>
+                    <div class="time-unit" data-time="hours">
+                        <div class="number-wrapper">
+                            <div class="number" id="hours">0</div>
+                        </div>
+                        <div class="label">ЧАСОВ</div>
+                        <div class="time-decoration">⏰</div>
+                    </div>
+                    <div class="time-unit" data-time="minutes">
+                        <div class="number-wrapper">
+                            <div class="number" id="minutes">0</div>
+                        </div>
+                        <div class="label">МИНУТ</div>
+                        <div class="time-decoration">⏱️</div>
+                    </div>
+                    <div class="time-unit" data-time="seconds">
+                        <div class="number-wrapper">
+                            <div class="number" id="seconds">0</div>
+                        </div>
+                        <div class="label">СЕКУНД</div>
+                        <div class="time-decoration">⚡</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress" class="progress-fill"></div>
+                </div>
+                <p class="status-text breathing" id="statusText">⏳ Ожидание возвращения...</p>
+            </div>
+
+            <!-- Информация -->
+            <div class="info-section">
+                <div class="info-card floating-card" data-tooltip="Информация о датах">
+                    <h3>📅 ДАТЫ</h3>
+                    <p><strong>Ушёл:</strong> 7 ноября 2025</p>
+                    <p><strong>Вернётся:</strong> 7 ноября 2026</p>
+                    <p><strong>Срок службы:</strong> 365 дней</p>
+                </div>
+                <div class="info-card floating-card" data-tooltip="Ваша статистика прогресса">
+                    <h3>⚡ СТАТИСТИКА</h3>
+                    <p><strong>Дней прошло:</strong> <span id="daysPassed">0</span></p>
+                    <p><strong>Часов прошло:</strong> <span id="hoursPassed">0</span></p>
+                    <p><strong>Процент пути:</strong> <span id="progressPercent">0%</span></p>
+                </div>
+                <div class="info-card floating-card" data-tooltip="Мотивационные сообщения">
+                    <h3>🎯 МОТИВАЦИЯ</h3>
+                    <p class="motivation-text">Каждый день приближает к возвращению!</p>
+                    <p class="motivation-text">Сила духа и терпение!</p>
+                    <p class="motivation-text">Скоро домой! 🏠</p>
+                </div>
+            </div>
+
+            <!-- Магазин тем -->
+            <div class="shop-section" id="shop">
+                <h2 class="glow">🎨 МАГАЗИН ТЕМ ОФОРМЛЕНИЯ</h2>
+                <div class="shop-header">
+                    <div class="currency-display">
+                        <div class="currency-item">
+                            <span class="currency-icon">💰</span>
+                            <span class="currency-label">Общая валюта:</span>
+                            <span class="currency-value" id="totalCurrency">0</span>
+                        </div>
+                        <button class="shop-toggle-btn" onclick="showThemeShop()">🛒 ОТКРЫТЬ МАГАЗИН</button>
+                    </div>
+                </div>
+                <div class="current-theme-display" id="currentThemeDisplay">
+                    <span>Текущая тема: <strong id="currentThemeName">Классическая</strong></span>
+                </div>
+            </div>
+
+            <!-- Статистика игр -->
+            <div class="stats-section">
+                <h2 class="glow">📊 СТАТИСТИКА ИГР</h2>
+                <div class="stats-grid">
+                    <div class="stat-card pulse-card">
+                        <div class="stat-icon">⚔️</div>
+                        <div class="stat-label">AFK Arena</div>
+                        <div class="stat-value" id="arenaStatHeroes">0</div>
+                        <div class="stat-desc">Героев</div>
+                    </div>
+                    <div class="stat-card pulse-card">
+                        <div class="stat-icon">🍄</div>
+                        <div class="stat-label">Legends of Mushrooms</div>
+                        <div class="stat-value" id="mushroomStatPower">0</div>
+                        <div class="stat-desc">Сила</div>
+                    </div>
+                    <div class="stat-card pulse-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-label">Достижения</div>
+                        <div class="stat-value" id="statAchievements">0</div>
+                        <div class="stat-desc">Разблокировано</div>
+                    </div>
+                    <div class="stat-card pulse-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-label">Время игры</div>
+                        <div class="stat-value" id="statPlayTime">0</div>
+                        <div class="stat-desc">Минут</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- События и бонусы -->
+            <div class="events-section">
+                <h2 class="glow">🎉 СОБЫТИЯ И БОНУСЫ</h2>
+                <div class="events-grid">
+                    <div class="event-card" id="bonusCard">
+                        <div class="event-icon">🎁</div>
+                        <div class="event-title">Ежедневный бонус</div>
+                        <div class="event-desc">Получайте награды каждый день!</div>
+                        <button class="event-btn" onclick="claimDailyBonus()">ПОЛУЧИТЬ</button>
+                    </div>
+                    <div class="event-card" id="loginCard">
+                        <div class="event-icon">📅</div>
+                        <div class="event-title">Серия входов</div>
+                        <div class="event-desc" id="loginStreak">Дней подряд: 0</div>
+                        <div class="event-reward">+10% к валюте</div>
+                    </div>
+                    <div class="event-card" id="achievementCard">
+                        <div class="event-icon">⭐</div>
+                        <div class="event-title">Достижение дня</div>
+                        <div class="event-desc" id="dailyAchievement">Получите 1 достижение</div>
+                        <div class="event-reward">Награда: 500💰</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Достижения -->
+            <div class="achievements-section" id="achievements">
+                <h2 class="glow">🏆 ДОСТИЖЕНИЯ</h2>
+                <div class="achievements-stats">
+                    <p>Получено: <span id="achievementsCount">0</span> / <span id="achievementsTotal">0</span></p>
+                    <div class="progress-bar-small">
+                        <div id="achievementsProgress" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div id="achievementsList" class="achievements-grid"></div>
+            </div>
+
+            <!-- Гачи-игры -->
+            <div class="gacha-section" id="gacha">
+                <h2 class="glow">🎴 ГАЧИ-ИГРЫ</h2>
+                <p style="text-align: center; margin-bottom: 20px; font-size: 1.2em;">Играйте часами!</p>
+                <div class="games-grid">
+                    <button class="game-btn pixel-btn" onclick="startArena()">⚔️ AFK ARENA</button>
+                    <button class="game-btn pixel-btn" onclick="startMushrooms()">🍄 LEGENDS OF MUSHROOMS</button>
+                </div>
+            </div>
+
+            <!-- Игровые области -->
+            <div id="gameArea" class="game-area hidden"></div>
+
+            <!-- Музыкальный плеер -->
+            <div class="music-section">
+                <h2 class="glow">🎵 МУЗЫКА</h2>
+                <div class="music-player">
+                    <audio id="backgroundMusic" loop>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="music-controls">
+                        <button class="music-btn" onclick="toggleMusic()" id="musicToggle">▶️ ВКЛЮЧИТЬ</button>
+                        <button class="music-btn" onclick="changeTrack()" id="changeTrackBtn">⏭️ СЛЕД.</button>
+                        <span id="musicTitle" class="music-title">8-bit ретро музыка</span>
+                    </div>
+                    <div class="volume-control">
+                        <label>🔊 Громкость:</label>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50" oninput="setVolume(this.value)">
+                        <span id="volumeValue">50%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивные элементы -->
+            <div class="fun-section">
+                <h2 class="glow">🎉 РАЗВЛЕЧЕНИЯ</h2>
+                <div class="fun-grid">
+                    <button class="fun-btn bounce-btn" onclick="showJokes()">😄 ШУТКИ</button>
+                    <button class="fun-btn bounce-btn" onclick="randomColor()">🌈 РАДУГА</button>
+                    <button class="fun-btn bounce-btn" onclick="showMotivationalQuote()">💪 МОТИВАЦИЯ</button>
+                    <button class="fun-btn bounce-btn" onclick="animatePage()">✨ МАГИЯ</button>
+                </div>
+            </div>
+
+            <!-- Цитаты и мотивация -->
+            <div class="quotes-section">
+                <h2 class="glow">💬 МОТИВАЦИОННЫЕ ЦИТАТЫ</h2>
+                <div class="quote-card rotating-card" id="quoteCard">
+                    <div class="quote-icon">💪</div>
+                    <p class="quote-text" id="quoteText">Терпение - ключ к победе!</p>
+                    <div class="quote-author" id="quoteAuthor">- Егор</div>
+                </div>
+                <button class="quote-btn" onclick="changeQuote()">🔄 НОВАЯ ЦИТАТА</button>
+            </div>
+
+            <!-- Коллекция тем -->
+            <div class="collection-section">
+                <h2 class="glow">🎨 КОЛЛЕКЦИЯ ТЕМ</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Соберите все темы оформления!</p>
+                <div class="theme-collection-grid" id="themeCollectionGrid"></div>
+            </div>
+
+            <!-- Мини-игры на главной -->
+            <div class="minigames-section" id="minigames">
+                <h2 class="glow">🎮 МИНИ-ИГРЫ</h2>
+                <div class="minigames-grid">
+                    <button class="minigame-btn" onclick="startClickerMiniGame()">🖱️ КЛИКЕР</button>
+                    <button class="minigame-btn" onclick="startMemoryGame()">🧠 ПАМЯТЬ</button>
+                    <button class="minigame-btn" onclick="startReactionGame()">⚡ РЕАКЦИЯ</button>
+                    <button class="minigame-btn" onclick="startNumberGuess()">🔢 УГАДАЙ ЧИСЛО</button>
+                    <button class="minigame-btn" onclick="startColorMatch()">🎨 ЦВЕТА</button>
+                    <button class="minigame-btn" onclick="startTypingGame()">⌨️ ПЕЧАТЬ</button>
+                </div>
+                <div id="minigameArea" class="minigame-area hidden"></div>
+            </div>
+
+            <!-- Рейтинг и лидеры -->
+            <div class="leaderboard-section">
+                <h2 class="glow">🏆 РЕЙТИНГ ИГРОКОВ</h2>
+                <div class="leaderboard-tabs">
+                    <button class="leaderboard-tab active" onclick="showLeaderboard('total')" data-type="total">Общий</button>
+                    <button class="leaderboard-tab" onclick="showLeaderboard('arena')" data-type="arena">AFK Arena</button>
+                    <button class="leaderboard-tab" onclick="showLeaderboard('mushroom')" data-type="mushroom">Mushrooms</button>
+                    <button class="leaderboard-tab" onclick="showLeaderboard('achievements')" data-type="achievements">Достижения</button>
+                </div>
+                <div id="leaderboardContent" class="leaderboard-content"></div>
+            </div>
+
+            <!-- Галерея прогресса -->
+            <div class="gallery-section">
+                <h2 class="glow">📸 ГАЛЕРЕЯ ПРОГРЕССА</h2>
+                <div class="gallery-grid" id="progressGallery"></div>
+            </div>
+
+            <!-- История посещений -->
+            <div class="history-section">
+                <h2 class="glow">📜 ИСТОРИЯ АКТИВНОСТИ</h2>
+                <div class="history-timeline" id="historyTimeline"></div>
+            </div>
+
+            <!-- Еженедельные задания -->
+            <div class="weekly-section">
+                <h2 class="glow">📅 ЕЖЕНЕДЕЛЬНЫЕ ЗАДАНИЯ</h2>
+                <div class="weekly-quests-grid" id="weeklyQuestsGrid"></div>
+                <div class="weekly-progress">
+                    <div class="weekly-progress-bar">
+                        <div id="weeklyProgress" class="weekly-progress-fill"></div>
+                    </div>
+                    <p>Прогресс недели: <span id="weeklyProgressText">0%</span></p>
+                </div>
+            </div>
+
+            <!-- Специальные события -->
+            <div class="special-events-section">
+                <h2 class="glow">🎪 СПЕЦИАЛЬНЫЕ СОБЫТИЯ</h2>
+                <div class="special-events-grid" id="specialEventsGrid"></div>
+            </div>
+
+            <!-- Футер -->
+            <footer>
+                <p class="blink">© 2025-2026 | Сайт отсчёта до возвращения Егора</p>
+                <div class="cursor-trail"></div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTop" class="scroll-to-top hidden" onclick="scrollToTop()" title="Наверх">
+        ⬆️
+    </button>
+
+    <!-- Улучшенные уведомления -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Индикатор загрузки -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Загрузка...</div>
+    </div>
+
+    <!-- Быстрая навигация -->
+    <nav class="quick-nav" id="quickNav">
+        <button class="nav-btn" onclick="scrollToSection('countdown')" title="Отсчёт">⏰</button>
+        <button class="nav-btn" onclick="scrollToSection('achievements')" title="Достижения">🏆</button>
+        <button class="nav-btn" onclick="scrollToSection('gacha')" title="Игры">🎴</button>
+        <button class="nav-btn" onclick="scrollToSection('shop')" title="Магазин">🛒</button>
+        <button class="nav-btn" onclick="scrollToSection('minigames')" title="Мини-игры">🎮</button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
