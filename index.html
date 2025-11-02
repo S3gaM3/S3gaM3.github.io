@@ -81,7 +81,12 @@
             </div>
 
             <!-- Информация -->
-            <div class="info-section">
+            <div class="info-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">📊 ИНФОРМАЦИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="info-card floating-card" data-tooltip="Информация о датах">
                     <h3>📅 ДАТЫ</h3>
                     <p><strong>Ушёл:</strong> 7 ноября 2025</p>
@@ -100,11 +105,16 @@
                     <p class="motivation-text">Сила духа и терпение!</p>
                     <p class="motivation-text">Скоро домой! 🏠</p>
                 </div>
+                </div>
             </div>
 
             <!-- Магазин тем -->
-            <div class="shop-section" id="shop">
-                <h2 class="glow">🎨 МАГАЗИН ТЕМ ОФОРМЛЕНИЯ</h2>
+            <div class="shop-section accordion-section" id="shop">
+                <div class="accordion-header">
+                    <h2 class="glow">🎨 МАГАЗИН ТЕМ ОФОРМЛЕНИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="shop-header">
                     <div class="currency-display">
                         <div class="currency-item">
@@ -118,11 +128,16 @@
                 <div class="current-theme-display" id="currentThemeDisplay">
                     <span>Текущая тема: <strong id="currentThemeName">Классическая</strong></span>
                 </div>
+                </div>
             </div>
 
             <!-- Статистика игр -->
-            <div class="stats-section">
-                <h2 class="glow">📊 СТАТИСТИКА ИГР</h2>
+            <div class="stats-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">📊 СТАТИСТИКА ИГР</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="stats-grid">
                     <div class="stat-card pulse-card">
                         <div class="stat-icon">⚔️</div>
@@ -149,11 +164,16 @@
                         <div class="stat-desc">Минут</div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- События и бонусы -->
-            <div class="events-section">
-                <h2 class="glow">🎉 СОБЫТИЯ И БОНУСЫ</h2>
+            <div class="events-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🎉 СОБЫТИЯ И БОНУСЫ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="events-grid">
                     <div class="event-card" id="bonusCard">
                         <div class="event-icon">🎁</div>
@@ -174,11 +194,16 @@
                         <div class="event-reward">Награда: 500💰</div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- Достижения -->
-            <div class="achievements-section" id="achievements">
-                <h2 class="glow">🏆 ДОСТИЖЕНИЯ</h2>
+            <div class="achievements-section accordion-section" id="achievements">
+                <div class="accordion-header">
+                    <h2 class="glow">🏆 ДОСТИЖЕНИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="achievements-stats">
                     <p>Получено: <span id="achievementsCount">0</span> / <span id="achievementsTotal">0</span></p>
                     <div class="progress-bar-small">
@@ -186,15 +211,21 @@
                     </div>
                 </div>
                 <div id="achievementsList" class="achievements-grid"></div>
+                </div>
             </div>
 
             <!-- Гачи-игры -->
-            <div class="gacha-section" id="gacha">
-                <h2 class="glow">🎴 ГАЧИ-ИГРЫ</h2>
+            <div class="gacha-section accordion-section" id="gacha">
+                <div class="accordion-header">
+                    <h2 class="glow">🎴 ГАЧИ-ИГРЫ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <p style="text-align: center; margin-bottom: 20px; font-size: 1.2em;">Играйте часами!</p>
                 <div class="games-grid">
                     <button class="game-btn pixel-btn" onclick="startArena()">⚔️ AFK ARENA</button>
                     <button class="game-btn pixel-btn" onclick="startMushrooms()">🍄 LEGENDS OF MUSHROOMS</button>
+                </div>
                 </div>
             </div>
 
@@ -202,8 +233,12 @@
             <div id="gameArea" class="game-area hidden"></div>
 
             <!-- Музыкальный плеер -->
-            <div class="music-section">
-                <h2 class="glow">🎵 МУЗЫКА</h2>
+            <div class="music-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🎵 МУЗЫКА</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="music-player">
                     <audio id="backgroundMusic" loop>
                         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -219,40 +254,60 @@
                         <span id="volumeValue">50%</span>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- Интерактивные элементы -->
-            <div class="fun-section">
-                <h2 class="glow">🎉 РАЗВЛЕЧЕНИЯ</h2>
+            <div class="fun-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🎉 РАЗВЛЕЧЕНИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="fun-grid">
                     <button class="fun-btn bounce-btn" onclick="showJokes()">😄 ШУТКИ</button>
                     <button class="fun-btn bounce-btn" onclick="randomColor()">🌈 РАДУГА</button>
                     <button class="fun-btn bounce-btn" onclick="showMotivationalQuote()">💪 МОТИВАЦИЯ</button>
                     <button class="fun-btn bounce-btn" onclick="animatePage()">✨ МАГИЯ</button>
                 </div>
+                </div>
             </div>
 
             <!-- Цитаты и мотивация -->
-            <div class="quotes-section">
-                <h2 class="glow">💬 МОТИВАЦИОННЫЕ ЦИТАТЫ</h2>
+            <div class="quotes-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">💬 МОТИВАЦИОННЫЕ ЦИТАТЫ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="quote-card rotating-card" id="quoteCard">
                     <div class="quote-icon">💪</div>
                     <p class="quote-text" id="quoteText">Терпение - ключ к победе!</p>
                     <div class="quote-author" id="quoteAuthor">- Егор</div>
                 </div>
                 <button class="quote-btn" onclick="changeQuote()">🔄 НОВАЯ ЦИТАТА</button>
+                </div>
             </div>
 
             <!-- Коллекция тем -->
-            <div class="collection-section">
-                <h2 class="glow">🎨 КОЛЛЕКЦИЯ ТЕМ</h2>
+            <div class="collection-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🎨 КОЛЛЕКЦИЯ ТЕМ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <p style="text-align: center; margin-bottom: 20px;">Соберите все темы оформления!</p>
                 <div class="theme-collection-grid" id="themeCollectionGrid"></div>
+                </div>
             </div>
 
             <!-- Мини-игры на главной -->
-            <div class="minigames-section" id="minigames">
-                <h2 class="glow">🎮 МИНИ-ИГРЫ</h2>
+            <div class="minigames-section accordion-section" id="minigames">
+                <div class="accordion-header">
+                    <h2 class="glow">🎮 МИНИ-ИГРЫ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="minigames-grid">
                     <button class="minigame-btn" onclick="startClickerMiniGame()">🖱️ КЛИКЕР</button>
                     <button class="minigame-btn" onclick="startMemoryGame()">🧠 ПАМЯТЬ</button>
@@ -262,11 +317,16 @@
                     <button class="minigame-btn" onclick="startTypingGame()">⌨️ ПЕЧАТЬ</button>
                 </div>
                 <div id="minigameArea" class="minigame-area hidden"></div>
+                </div>
             </div>
 
             <!-- Рейтинг и лидеры -->
-            <div class="leaderboard-section">
-                <h2 class="glow">🏆 РЕЙТИНГ ИГРОКОВ</h2>
+            <div class="leaderboard-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🏆 РЕЙТИНГ ИГРОКОВ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="leaderboard-tabs">
                     <button class="leaderboard-tab active" onclick="showLeaderboard('total')" data-type="total">Общий</button>
                     <button class="leaderboard-tab" onclick="showLeaderboard('arena')" data-type="arena">AFK Arena</button>
@@ -274,23 +334,38 @@
                     <button class="leaderboard-tab" onclick="showLeaderboard('achievements')" data-type="achievements">Достижения</button>
                 </div>
                 <div id="leaderboardContent" class="leaderboard-content"></div>
+                </div>
             </div>
 
             <!-- Галерея прогресса -->
-            <div class="gallery-section">
-                <h2 class="glow">📸 ГАЛЕРЕЯ ПРОГРЕССА</h2>
+            <div class="gallery-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">📸 ГАЛЕРЕЯ ПРОГРЕССА</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="gallery-grid" id="progressGallery"></div>
+                </div>
             </div>
 
             <!-- История посещений -->
-            <div class="history-section">
-                <h2 class="glow">📜 ИСТОРИЯ АКТИВНОСТИ</h2>
+            <div class="history-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">📜 ИСТОРИЯ АКТИВНОСТИ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="history-timeline" id="historyTimeline"></div>
+                </div>
             </div>
 
             <!-- Еженедельные задания -->
-            <div class="weekly-section">
-                <h2 class="glow">📅 ЕЖЕНЕДЕЛЬНЫЕ ЗАДАНИЯ</h2>
+            <div class="weekly-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">📅 ЕЖЕНЕДЕЛЬНЫЕ ЗАДАНИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="weekly-quests-grid" id="weeklyQuestsGrid"></div>
                 <div class="weekly-progress">
                     <div class="weekly-progress-bar">
@@ -298,12 +373,18 @@
                     </div>
                     <p>Прогресс недели: <span id="weeklyProgressText">0%</span></p>
                 </div>
+                </div>
             </div>
 
             <!-- Специальные события -->
-            <div class="special-events-section">
-                <h2 class="glow">🎪 СПЕЦИАЛЬНЫЕ СОБЫТИЯ</h2>
+            <div class="special-events-section accordion-section">
+                <div class="accordion-header">
+                    <h2 class="glow">🎪 СПЕЦИАЛЬНЫЕ СОБЫТИЯ</h2>
+                    <span class="accordion-toggle">▼</span>
+                </div>
+                <div class="accordion-content">
                 <div class="special-events-grid" id="specialEventsGrid"></div>
+                </div>
             </div>
 
             <!-- Футер -->

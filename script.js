@@ -4059,11 +4059,44 @@ function initSakuraAnimation() {
 }
 
 // Инициализация
+// Accordion функциональность для мобильных устройств
+function initAccordions() {
+    if (window.innerWidth <= 768) {
+        const accordionSections = document.querySelectorAll('.accordion-section');
+        
+        accordionSections.forEach(section => {
+            // Добавляем начальное состояние - все свернуты, кроме countdown
+            if (!section.classList.contains('countdown-section')) {
+                section.classList.add('collapsed');
+            }
+            
+            const header = section.querySelector('.accordion-header');
+            if (header) {
+                header.addEventListener('click', () => {
+                    section.classList.toggle('collapsed');
+                });
+            }
+        });
+    }
+}
+
+// Переинициализация accordion при изменении размера окна
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        initAccordions();
+    }, 250);
+});
+
 window.addEventListener('load', () => {
     // Таймер уже запущен выше, просто обновляем при загрузке
     updateCountdown();
     renderAchievements();
     checkAchievements();
+    
+    // Инициализация accordion для мобильных
+    initAccordions();
     
     // Летающие эффекты отключены
     

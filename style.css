@@ -2552,9 +2552,10 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
 @media (prefers-reduced-motion: no-preference) {
     @media (max-width: 768px) {
         /* Упрощаем сложные анимации на мобильных для лучшей производительности */
+        /* Уменьшаем скорость в 2 раза */
         * {
-            animation-duration: 0.8s !important;
-            transition-duration: 0.2s !important;
+            animation-duration: 1.6s !important;
+            transition-duration: 0.4s !important;
         }
         
         /* Отключаем тяжелые анимации */
@@ -2569,6 +2570,84 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
 }
 
 /* Респонсивность */
+/* Accordion стили для мобильных блоков */
+/* На десктопе accordion скрыт */
+@media (min-width: 769px) {
+    .accordion-header,
+    .accordion-toggle {
+        display: none;
+    }
+    
+    .accordion-content {
+        display: block !important;
+        max-height: none !important;
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Секции со сворачиванием на мобильных */
+    .accordion-section {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .accordion-section .accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        padding: 15px;
+        margin: -20px -15px 0 -15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid #000;
+        transition: background 0.4s;
+        min-height: 44px; /* Touch-friendly */
+    }
+    
+    .accordion-section .accordion-header:hover,
+    .accordion-section .accordion-header:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .accordion-section .accordion-toggle {
+        font-size: 1.2em;
+        transition: transform 0.4s ease;
+        display: inline-block;
+        margin-left: 10px;
+        font-weight: bold;
+    }
+    
+    .accordion-section.collapsed .accordion-toggle {
+        transform: rotate(-90deg);
+    }
+    
+    .accordion-section .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        padding: 0;
+    }
+    
+    .accordion-section:not(.collapsed) .accordion-content {
+        max-height: 5000px;
+        padding-top: 20px;
+    }
+    
+    .accordion-section.collapsed .accordion-content {
+        max-height: 0;
+        padding: 0;
+    }
+    
+    /* Убираем padding у заголовка glow когда он в accordion */
+    .accordion-section .accordion-header .glow {
+        margin-bottom: 0;
+        flex: 1;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         cursor: default;
