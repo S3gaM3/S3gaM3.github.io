@@ -4394,6 +4394,92 @@ function initSakuraAnimation() {
     // Отключено
 }
 
+// ========== СБРОС ПРОГРЕССА ==========
+function resetAllProgress() {
+    // Двойное подтверждение для безопасности
+    const confirm1 = confirm('⚠️ ВНИМАНИЕ!\n\nВы действительно хотите сбросить ВЕСЬ прогресс?\n\nЭто удалит:\n• Все достижения\n• Весь прогресс в гачи-играх\n• Всю валюту и монеты\n• Купленные темы (кроме классической)\n• Всю статистику\n• Ежедневные бонусы и серии\n\nЭТО ДЕЙСТВИЕ НЕЛЬЗЯ ОТМЕНИТЬ!');
+    
+    if (!confirm1) return;
+    
+    const confirm2 = confirm('🛑 ПОСЛЕДНЕЕ ПОДТВЕРЖДЕНИЕ!\n\nВведите "СБРОСИТЬ" (без кавычек) для подтверждения:');
+    
+    if (!confirm2) return;
+    
+    const userInput = prompt('Введите "СБРОСИТЬ" для подтверждения сброса:');
+    
+    if (userInput !== 'СБРОСИТЬ') {
+        alert('❌ Сброс отменён. Неправильное подтверждение.');
+        return;
+    }
+    
+    // Полный список всех ключей localStorage
+    const allKeys = [
+        // Статистика
+        'stats',
+        'visits',
+        'playTime',
+        
+        // Достижения
+        'achievements',
+        
+        // Темы
+        'ownedThemes',
+        'currentTheme',
+        
+        // Ежедневные бонусы
+        'lastDailyBonus',
+        'dailyBonusStreak',
+        'lastLogin',
+        'loginStreak',
+        
+        // AFK Arena
+        'arenaHeroes',
+        'arenaCoins',
+        'arenaStage',
+        'arenaXP',
+        'arenaXPToNext',
+        'arenaCrystals',
+        'arenaTeam',
+        'arenaArtefacts',
+        'arenaTournamentWins',
+        'arenaPrestige',
+        'arenaEquipment',
+        'arenaMissions',
+        'arenaRaidBosses',
+        'arenaGuildPoints',
+        'arenaEventActive',
+        'arenaAutoBattleEnabled',
+        'arenaHeroStarLevel',
+        'arenaFusionPoints',
+        'arenaDailyReward',
+        'arenaQuests',
+        
+        // Legends of Mushrooms
+        'mushroomLevel',
+        'mushroomCoins',
+        'mushroomPower',
+        'mushroomAutoClick',
+        'mushroomCollection',
+        'mushroomAdventureStage',
+        'mushroomSkillPoints',
+        'mushroomPrestige',
+        'mushroomTournamentWins',
+        'mushroomAutoAdventure',
+        'mushroomUpgrades',
+        'mushroomDailyReward',
+        'mushroomQuests'
+    ];
+    
+    // Удаляем все ключи
+    allKeys.forEach(key => {
+        localStorage.removeItem(key);
+    });
+    
+    // Показываем сообщение и перезагружаем страницу
+    alert('✅ Весь прогресс сброшен!\n\nСтраница будет перезагружена...');
+    location.reload();
+}
+
 // Инициализация
 // Accordion функциональность для мобильных устройств
 function initAccordions() {
