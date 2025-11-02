@@ -2595,7 +2595,7 @@ button, .pixel-btn, .fun-btn, .minigame-btn, .game-btn, .music-btn, .event-btn {
         /* Упрощаем сложные анимации на мобильных для лучшей производительности */
         /* Уменьшаем скорость в 2 раза */
         * {
-            animation-duration: 1.6s !important;
+            animation-duration: 10.6s !important;
             transition-duration: 0.4s !important;
         }
         
